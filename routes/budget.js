@@ -17,6 +17,7 @@ const Budget_1 = __importDefault(require("../models/Budget"));
 const router = express_1.default.Router();
 // GET all budgets
 router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('GET request to /budgets');
     try {
         const budgets = yield Budget_1.default.find();
         res.json(budgets);

@@ -5,6 +5,7 @@ const router = express.Router();
 
 // GET all budgets
 router.get('/', async (req, res) => {
+    console.log('GET request to /budgets');
   try {
     const budgets = await Budget.find();
     res.json(budgets);

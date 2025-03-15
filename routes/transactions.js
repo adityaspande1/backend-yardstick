@@ -17,6 +17,7 @@ const Transactions_1 = __importDefault(require("../models/Transactions"));
 const router = express_1.default.Router();
 // GET all transactions
 router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('GET request to /transactions');
     try {
         const transactions = yield Transactions_1.default.find().sort({ date: -1 });
         res.json(transactions);
@@ -27,6 +28,7 @@ router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 }));
 //Post a new Transaction
 router.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('POST request to /transactions');
     try {
         const transaction = new Transactions_1.default(req.body);
         yield transaction.save();
@@ -38,6 +40,7 @@ router.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 }));
 //to update the transactions.
 router.put('/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('PUT request to /transactions/:id');
     try {
         const { id } = req.params;
         const transaction = yield Transactions_1.default.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -49,6 +52,7 @@ router.put('/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 }));
 // to delete the transactions.
 router.delete('/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('DELETE request to /transactions/:id');
     try {
         yield Transactions_1.default.findByIdAndDelete(req.params.id);
         res.status(204).end();
